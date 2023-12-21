@@ -2,8 +2,12 @@
 
 namespace Database\Factories;
 
+use App\Models\UserAddress;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends Factory<UserAddress>
+ */
 class UserAddressFactory extends Factory
 {
     /**
