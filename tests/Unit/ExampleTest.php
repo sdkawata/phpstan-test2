@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Models\User;
 use App\Models\UserAddress;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\TestCase;
 
@@ -23,6 +24,13 @@ class ExampleTest extends TestCase
         $address = UserAddress::factory()->forUser()->create();
         $this->assertNotNull($address->user);
         $this->assertNotNull($address->user->email_verified_at);
+
+        UserAddress::query()->hoge()->get();
+        User::query()->with([
+            'address' => function (BelongsTo $query) {
+                $query->hoge();
+            },
+        ])->get();
 
         $b = (new Request())->route()->parameter('a');
     }

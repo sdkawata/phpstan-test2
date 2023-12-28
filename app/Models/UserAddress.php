@@ -16,4 +16,9 @@ final class UserAddress extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function scopeHoge(Builder $query): Builder
+    {
+        $query->whereRaw('1=1');
+    }
 }
